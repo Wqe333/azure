@@ -7,3 +7,5 @@ pyodbc
 opencensus-ext-azure
 opencensus
 fastapi
+pytest
+requests

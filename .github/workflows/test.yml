@@ -1,0 +1,35 @@
+name: Run Tests Before Merge
+
+on:
+  pull_request:
+    branches:
+      - main 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repozytorium
+      uses: actions/checkout@v3
+
+    - name: Install ODBC Driver 18 for SQL Server
+      run: |
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+        curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+        sudo apt update
+        sudo ACCEPT_EULA=Y apt install -y msodbcsql18 unixodbc-dev
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Ustawienie zmiennej środowiskowej
+      run: echo "DB_CONNECTION_STRING=${{ secrets.DB_CONNECTION_STRING }}" >> $GITHUB_ENV
+
+    - name: Run tests
+      run: pytest tests/
