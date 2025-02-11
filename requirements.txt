@@ -7,4 +7,3 @@ pyodbc
 opencensus-ext-azure
 opencensus
 fastapi
-decimal
