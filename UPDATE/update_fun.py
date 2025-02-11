@@ -11,7 +11,7 @@ logger = IpLogger()
 def update_data(req: func.HttpRequest, update, cursor, **kwargs) -> func.HttpResponse:
     update_id = update.pop("ProductID")
     parameters = update
-
+    #TEST CZY JEST W AZURE
     if len(parameters) == 0:
         return func.HttpResponse("Error no enought data", status_code=400)
     
