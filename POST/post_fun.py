@@ -14,7 +14,7 @@ def get_db_connection():
 @log_function_call
 def post_data(req: func.HttpRequest, data, cursor, **kwargs) -> func.HttpResponse:
     """add new product to products table"""
-
+    #added for tests
     name = data.get("Name")
     price = data.get("Price")
     stock = data.get("Stock")
