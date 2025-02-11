@@ -9,4 +9,3 @@ opencensus
 fastapi
 pytest
 requests
-pytest-azure-functions
