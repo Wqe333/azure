@@ -10,3 +10,4 @@ fastapi
 pytest
 requests
 pytest-azure-functions
+
